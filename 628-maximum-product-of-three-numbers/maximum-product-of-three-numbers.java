@@ -1,21 +1,38 @@
 class Solution {
     public int maximumProduct(int[] nums) {
-        Arrays.sort(nums);
-        int max=Integer.MIN_VALUE;
-        int low=0;
-        int mid=1;
-        int high=nums.length-1;
-        int pro=1;
-        while(mid<high){
-           pro=nums[low]*nums[mid]*nums[high];
-            max=Math.max(max,pro);
-            low++;
-            mid++;
-        }
-        return max;
-        // Arrays.sort(nums);
-        // int product1=nums[nums.length-1]*nums[nums.length-2]*nums[nums.length-3];
-        // int product2=nums[0]*nums[1]*nums[nums.length-1];
-        // return Math.max(product1,product2);
+        int max1=Integer.MIN_VALUE;
+        int max2=Integer.MIN_VALUE;
+        int max3=Integer.MIN_VALUE;
+
+        int min1=Integer.MAX_VALUE;
+        int min2=Integer.MAX_VALUE;
+        for(int n:nums){
+            if(n>max1){
+                max3=max2;
+                max2=max1;
+                max1=n;
+            }
+            else if(n>max2){
+                max3=max2;
+                max2=n;
+            }
+
+            else if(n>max3){
+                max3=n;
+            }
+            if(n<min1){
+                min2=min1;
+                min1=n;
+            }
+            else if(n<min2){
+                min2=n;
+            }
+            }
+        
+
+        
+        int product1=max1*max2*max3;
+        int product2=max1*min1*min2;
+        return Math.max(product1,product2);
     }
 }
