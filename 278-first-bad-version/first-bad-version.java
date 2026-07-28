@@ -12,7 +12,7 @@ public class Solution extends VersionControl {
                 a=mid;
                 high=mid-1;
             }
-            else if(isBadVersion(mid)==false){
+            else{
                 low=mid+1;
             }
         }
